@@ -10,3 +10,4 @@ from minecraftstuff import *
 mybuild = Structure(mc,140,101,103, 'thang_house.csv')
 mybuild.introduce()
 mybuild.paste()
+mybuild.tele_in(mc.getPlayerEntityId('huyhuy17'))
