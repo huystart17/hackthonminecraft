@@ -31,9 +31,9 @@ officePlace = [
 main_player = "Jack"
 
 street = {
-    "x": 301,
-    "z": 301,
-    "y": 101,
+    "x": startPoint['x'] + 1,
+    "z": startPoint['y'] + 1,
+    "y": startPoint['z'] + 50,
     "width": 9,
     "long": 300,
     "block" : 35,
