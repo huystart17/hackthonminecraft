@@ -1,5 +1,7 @@
+from docutils.nodes import citation
+
 from mc import mc
-import hieu_citydata as citydata
+import hung_citydata as citydata
 
 
 def initial_city():
@@ -37,11 +39,12 @@ def initial_city():
 def teleport():
     main_id = mc.getPlayerEntityId(citydata.main_player)
     x, y, z = citydata.startPoint['x'], citydata.startPoint['y'], citydata.startPoint['z']
-    mc.entity.setPos(main_id, x, y + 2, z)
+    mc.entity.setPos(main_id, x, y + 50, z)
     mc.postToChat('teleport {}'.format(citydata.main_player))
 
 
-# teleport()
+teleport()
+
 
 def make_street():
     x, y, z = citydata.street['x'], citydata.street['y'], citydata.street['z']
@@ -61,4 +64,20 @@ def make_street():
                      4)
 
 
-make_street()
+def make_office():
+    x, y, z = citydata.office['x'], citydata.office['y'], citydata.office['z']
+    floors = citydata.office['floors']
+    floor_height = citydata.office['floor_height']
+    width = citydata.office['width']
+    long = citydata.office['long']
+    block = citydata.office['block']
+    print(citydata.office)
+    for floor in range(citydata.office['floors']):
+        mc.setBlocks(x, y + floor * floor_height, z, x + width, y + (floor + 1) * floor_height, z + long, block)
+        mc.setBlocks(x, y + floor * floor_height + 1, z, x + width, y + (floor + 1) * floor_height - 1, z + long,102 )
+        mc.setBlocks(x + 1, y + floor * floor_height + 1, z + 1, x + width - 1, y + (floor + 1) * floor_height - 1,
+                     z + long - 1, 0)
+    mc.postToChat('Xay office')
+
+
+make_office()
